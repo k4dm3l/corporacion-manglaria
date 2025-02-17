@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('projects')
+---
+<Layout>
+    <section class="flex flex-col gap-4 max-w-6xl px-10">
+        {
+            entries.map((entry) => {
+                const { data, slug } = entry;
+                const { title, author, img, excerpt, timestamp } = data;
+
+                return (
+                        <article>
+                            {img && <img />}
+                            <div>
+                                <h1>{title}</h1>
+                                <p>{excerpt}</p>
+                                <span>{timestamp}</span>
+                            </div>
+                            <a href={`/projects/${slug}`}>Leer mas ...</a>
+                        </article>
+                );
+            })
+        }
+    </section>
+</Layout>
