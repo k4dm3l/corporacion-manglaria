@@ -1,26 +1,24 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { actions } from "astro:actions";
+import Layout from "../../layouts/Layout.astro";
 
-const entries = await getCollection('projects')
+const { data, error } = await Astro.callAction(actions.getEntitiesPaginate, {
+    contentType: "project",
+    page: 1,
+});
+
+if (error) return Astro.redirect("/500");
 ---
+
 <Layout>
     <section class="flex flex-col gap-4 max-w-6xl px-10">
         {
-            entries.map((entry) => {
-                const { data, slug } = entry;
-                const { title, author, img, excerpt, timestamp } = data;
-
+            data?.entities.map((entity) => {
                 return (
-                        <article>
-                            {img && <img />}
-                            <div>
-                                <h1>{title}</h1>
-                                <p>{excerpt}</p>
-                                <span>{timestamp}</span>
-                            </div>
-                            <a href={`/projects/${slug}`}>Leer mas ...</a>
-                        </article>
+                    <div>
+                        {entity._id}
+                        {entity.excerpt}
+                    </div>
                 );
             })
         }

@@ -1,31 +1,18 @@
 ---
-import { getCollection, render } from "astro:content";
-
+import { actions } from "astro:actions";
 import Layout from "../../layouts/Layout.astro";
 
-export async function getStaticPaths() {
-  const entries = await getCollection("projects");
+const { slug = '' } = Astro.params
 
-  return entries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry }
-  }))
-}
+const { data, error } = await Astro.callAction(actions.getEntityBySlug, {
+  slug,
+  contentType: 'project'
+})
 
-const { entry } = Astro.props
-const { data, slug } = entry
-const { title, author, img, excerpt, timestamp } = data;
+if(error) return Astro.redirect('/404')
 
-const { Content } = await render(entry)
 ---
 
-<Layout title={`${title} - Dev Books`}>
- {title}
- {author}
- {img}
- {excerpt}
- {timestamp}
- <div class="prose prose-invert">
-  <Content />
-</div>
+<Layout title={` - Dev Books`}>
+ 
 </Layout>

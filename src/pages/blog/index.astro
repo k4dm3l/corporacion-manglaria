@@ -1,29 +1,24 @@
 ---
+import { actions } from "astro:actions";
 import Layout from "../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
 
-const entries = await getCollection("blog");
+const { data, error } = await Astro.callAction(actions.getEntitiesPaginate, {
+    contentType: "blog",
+    page: 1,
+});
+
+if (error) return Astro.redirect("/500");
 ---
 
 <Layout>
-    <section>
+    <section class="flex flex-col gap-4 max-w-6xl px-10">
         {
-            entries.map((entry) => {
-                const { data, slug } = entry;
-                const { title, author, img, excerpt, timestamp } = data;
-
+            data?.entities.map((entity) => {
                 return (
-                    <a href={`/blog/${slug}`}>
-                        <article>
-                            {img && <img />}
-                            <div>
-                                <h1>{title}</h1>
-                                <p>{excerpt}</p>
-                                <span>{timestamp}</span>
-                            </div>
-                            <a href={`/blog/${slug}`}>Leer mas ...</a>
-                        </article>
-                    </a>
+                    <div>
+                        {entity._id}
+                        {entity.excerpt}
+                    </div>
                 );
             })
         }
