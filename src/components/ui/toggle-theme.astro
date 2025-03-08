@@ -1,0 +1,50 @@
+---
+import DarkIcon from "@/icons/dark-icon.astro";
+import LigthIcon from "@/icons/ligth-icon.astro";
+---
+
+<button id="toggle-theme" class="size-10 hover:opacity-80 transition-all bg-slate-50 dark:bg-slate-800 flex cursor-pointer rounded-full items-center justify-center stroke-daisy-bush-400 text-daisy-bush-400">
+    <svg
+        id="svgIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="w-5 h-5 text-color-muted"
+    >
+        <DarkIcon />
+        <LigthIcon />
+    </svg>
+</button>
+
+<style>
+    :global .sun {
+        display: inline-block;
+    }
+    :global .moon {
+        display: none;
+    }
+
+    :global(.dark) .sun {
+        display: none;
+    }
+    :global(.dark) .moon {
+        display: inline-block;
+    }
+</style>
+
+<script>
+    import { getCookie, setCookie } from "@/utils/cookies";
+import { $ } from "@/utils/dom-selector";
+    const button = $("#toggle-theme");
+
+    button?.addEventListener("click", () => {
+        const currentTheme = getCookie("theme") ?? "";
+        const isDark = currentTheme === "dark";
+        console.log(currentTheme);
+
+        setCookie("theme", isDark ? "light" : "dark", 365);
+        document.documentElement.classList.toggle(
+        'dark', !isDark 
+        )
+    });
+</script>

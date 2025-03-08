@@ -1,9 +1,8 @@
 ---
-import '../styles/global.css'
-const { 
-	title = "Corporación Manglaria", 
-	content = "" 
-	} = Astro.props;
+import "@/styles/global.css";
+import Footer from "@/components/footer.astro";
+
+const { title = "Corporación Manglaria", content = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,9 +14,23 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={content} />
 		<title>{title}</title>
+		<script>
+			import { getCookie } from "@/utils/cookies";
+
+			document.documentElement.classList.toggle(
+				"dark",
+				getCookie("theme") === "dark" ||
+					(!getCookie("theme") &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches),
+			);
+		</script>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-backgroud relative">
+		<main class="mt-28 max-w-7xl mx-auto px-6 md:px-16">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 

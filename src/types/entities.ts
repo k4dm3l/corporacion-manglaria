@@ -7,6 +7,8 @@ export interface TEntity {
     isDeleted: boolean;
     createdAt: Date;
     updatedAt: Date;
+    content?: string;
+    slug: string;
 }
 
 export interface TAuthor {

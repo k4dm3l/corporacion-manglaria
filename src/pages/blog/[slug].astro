@@ -1,8 +1,11 @@
 ---
+import { marked } from 'marked';
 import { actions } from "astro:actions";
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 
 const { slug = '' } = Astro.params
+
+if(!slug) return Astro.redirect('/404')
 
 const { data, error } = await Astro.callAction(actions.getEntityBySlug, {
   slug,
@@ -11,8 +14,21 @@ const { data, error } = await Astro.callAction(actions.getEntityBySlug, {
 
 if(error) return Astro.redirect('/404')
 
+const {content, author, title, createdAt,} = data
+
+const  htmlContent = content ? marked(content) : null
+
 ---
 
-<Layout title={` - Dev Books`}>
- 
+<Layout title={`${title}`}>
+     <h1>{title}</h1>
+     <div class="prose prose-p:m-0 prose-p:p-0"  set:html={htmlContent}>
+      <footer class="p-3">
+        <p class="text-secondary-text text-xs font-light">
+            @{author?.name}
+        </p>
+        <p class="text-secondary-text text-xs font-light">
+            {createdAt}
+        </p>
+    </footer>
 </Layout>

@@ -13,7 +13,7 @@ export const getEntitiesPaginate = defineAction({
     handler: async ({ contentType, search, page = 1 }): Promise<TGetEntitiesResponse> => {
         try {
             const querySearch = search ? `&search=${search}` : ''
-            const { data } = await fetcher.get(`/${contentType}?page=${page}${querySearch}`)
+            const { data } = await fetcher.get(`/content/${contentType}?page=${page}${querySearch}`)
             const { data: entities = [], pagination = {} } = data
             return { entities, pagination }
         } catch (e) {
