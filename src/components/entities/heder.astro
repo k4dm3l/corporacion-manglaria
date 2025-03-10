@@ -1,0 +1,14 @@
+---
+import ToggleButton from "@/components/ui/toggle-theme.astro";
+import SearchButton from "@/components/entities/search-button.astro";
+---
+
+<nav class="h-20 top-0 right-0 w-full bg-background flex items-center justify-between px-6 fixed border-b border-border bg-backgroud-secondary">
+    <span> Logo </span>
+    <div>
+        <div class="flex items-center gap-4">
+            <ToggleButton />
+            <SearchButton />
+        </div>
+    </div>
+</nav>
