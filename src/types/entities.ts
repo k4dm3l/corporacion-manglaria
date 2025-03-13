@@ -1,12 +1,12 @@
 export interface TEntity {
     _id: string;
     title: string;
-    excerpt: string;
+    description: string;
     author: TAuthor;
     image: string;
     isDeleted: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
     content?: string;
     slug: string;
 }
@@ -18,9 +18,10 @@ export interface TAuthor {
 }
 
 interface TPagination {
-    total: number;
-    page: number;
-    pages: number;
+    page: number
+    limit: number
+    total: number
+    totalPages: number
 }
 
 export interface TGetEntitiesResponse {

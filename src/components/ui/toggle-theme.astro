@@ -33,16 +33,13 @@ import LigthIcon from "@/icons/ligth-icon.astro";
 </style>
 
 <script>
-    import { getCookie, setCookie } from "@/utils/cookies";
 import { $ } from "@/utils/dom-selector";
     const button = $("#toggle-theme");
 
     button?.addEventListener("click", () => {
-        const currentTheme = getCookie("theme") ?? "";
+        const currentTheme = localStorage.theme ?? "";
         const isDark = currentTheme === "dark";
-        console.log(currentTheme);
-
-        setCookie("theme", isDark ? "light" : "dark", 365);
+        localStorage.setItem("theme", isDark ? "light" : "dark");
         document.documentElement.classList.toggle(
         'dark', !isDark 
         )
