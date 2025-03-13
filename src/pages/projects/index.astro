@@ -1,63 +1,72 @@
 ---
 import { actions } from "astro:actions";
-import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/entities/heder.astro";
-import Pagination from "@/components/ui/pagination.astro"
+import Layout from "@/layouts/app-layout.astro";
+import Pagination from "@/components/ui/pagination.astro";
+import InputSearch from "@/components/ui/input-search.astro";
+import { formatDate } from "@/utils/dates";
+
+const url = Astro.url
+const page = url.searchParams.get('page') ?? '1'
+const search = url.searchParams.get('search') ?? ''
 
 const { data, error } = await Astro.callAction(actions.getEntitiesPaginate, {
     contentType: "project",
-    page: 1,
+    page,
+    search
 });
 
 if (error) return Astro.redirect("/500");
+
+const showPagination = data.pagination.totalPages > 1
+
 ---
 
 <Layout title="Nuestro Blog">
-    <Header />
-    <h3 class="text-center text-secondary-text text-xs font-light mb-2">
-        NUESTRO BLOG
-    </h3>
-    <h1 class="text-center text-primary-text text-4xl font-semibold mb-5">
-        MANGRLARIA BLOG
-    </h1>
-    <p
-        class="text-center text-secondary-text text-md font-normal max-w-2xl mx-auto"
-    >
-        our blogs are written from very research research and well known writers
-        writers so that we can provide you the best blogs and articles articles
-        for you to read them all along
-    </p>
-    <section
-        class="gap-6 max-w-6xl text-primary-text mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-    >
+    <div class="px-6 md:px-10">
+        <h1
+            class="text-center pt-14 text-primary-text text-5xl font-bold mb-5 text-secondary-text dark:text-white"
+        >
+            Manglaria <span
+                class="bg-gradient-to-r from-amber-700 to-secondary-indigo bg-clip-text text-transparent"
+                >Proyectos</span
+            >
+        </h1>
+        <p class="text-center text-md font-normal max-w-xl mx-auto text-balance">
+            our blogs are written from very research research and well known
+            writers writers so that we can provide you the best blogs and
+            articles articles for you to read them all along
+        </p>
+    </div>
+    <InputSearch class="focus:border-amber-700 focus:outline-amber-700" />
+    <section class="section text-primary-text mt-10 flex flex-col gap-6">
         {
-            data?.entities.map(
-                ({ title, excerpt, author, createdAt, image, slug }) => {
-                    return (
-                        <article class="border h-auto border-border rounded-md bg-backgroud-secondary overflow-hidden">
-                            {image && <img src={image} alt={title} class="aspect-video object-cover" />}
-                            <h3 class="text-primary-text text-lg font-semibold p-3 line-clamp-2">
+            data?.entities.map(({ title, description, createdAt, slug }) => {
+                return (
+                    <a
+                        href={`/projects/${slug}`}
+                        class="flex flex-col md:flex-row gap-3 md:gap-6 items-end transition-colors duration-300 hover:bg-broom-600/10 dark:hover:bg-broom-900/30 px-4 py-2 rounded-lg"
+                    >
+                        <div class="w-full md:max-w-[350px]">
+                            <h3 class="text-secondary-text dark:text-white text-xl font-semibold line-clamp-1">
                                 {title}
                             </h3>
-                            <p class="text-secondary-text text-sm px-3 line-clamp-3">
-                                {excerpt}
+                            <p class="line-clamp-2 text-sm font-light">
+                                {description}
                             </p>
-                            <a href={`/project/${slug}`} class="text-daisy-bush-800 text-xs m-3 dark:text-daisy-bush-100 dark:bg-daisy-bush-600 inline-block px-4 py-1 rounded-sm bg-daisy-bush-100 hover:underline transition-all duration-300">
-                                leer mas ...
-                            </a>
-                            <footer class="p-3">
-                                <p class="text-secondary-text text-xs font-light">
-                                    @{author?.name}
-                                </p>
-                                <p class="text-secondary-text text-xs font-light">
-                                    {createdAt}
-                                </p>
-                            </footer>
-                        </article>
-                    );
-                },
-            )
+                        </div>
+                        <div class="flex-1 flex items-center gap-6">
+                            <span class="hidden md:block md:w-full flex-1 border-t border-dashed border-secondary-dark-text/70" />
+                            <div class="w-full md:w-fit">
+                                <span class="text-sm font-light">
+                                    {formatDate(createdAt)}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                );
+            })
         }
     </section>
-    <Pagination />
+
+    {showPagination && <Pagination pages={data.pagination.totalPages ?? 1} class="hover:bg-broom-600/15 dark:hover:bg-broom-900/30"/>}
 </Layout>

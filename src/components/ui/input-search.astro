@@ -1,0 +1,94 @@
+---
+const url = Astro.url;
+const search = url.searchParams.get("search") ?? "";
+const decodeSearh = search ? decodeURIComponent(search) : "";
+const {class: classes} = Astro.props
+---
+
+<section
+    class="w-full backdrop-blur-sm bg-transparent flex flex-col items-center mx-auto sticky top-0 py-6 px-6"
+>
+    <form method="GET" class="relative max-w-2xl w-full" id="search-form">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-5 absolute left-2 top-[50%] translate-y-[-50%]"
+            ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+            ></path></svg
+        >
+
+        <input
+            value={decodeSearh}
+            id="input-search"
+            placeholder="Busca por titulo o descripción ..."
+            class:list={["border-2 border-slate-700/50 w-full px-10 outline-0 rounded-full flex items-center h-10.5", classes]}
+        />
+        {
+            decodeSearh && (
+                <button
+                    id="clear"
+                    type="button"
+                    class=" absolute right-2 top-[50%] translate-y-[-50%] cursor-pointer hover:brightness-110"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="size-5"
+                    >
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12" />
+                    </svg>
+                </button>
+            )
+        }
+    </form>
+</section>
+
+<script>
+    import { $ } from "@/utils/dom-selector";
+    const searchFrom = $("#search-form");
+    const inputValue = $("#input-search") as HTMLInputElement | null;
+    const clearForm = $("#clear");
+
+    searchFrom?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const url = new URL(window.location.href);
+        const queryParams = encodeURIComponent(inputValue?.value ?? "");
+        const currentSearchValue = decodeURIComponent(
+            url.searchParams.get("search") ?? "",
+        );
+
+        console.log(currentSearchValue, inputValue?.value);
+
+        if (currentSearchValue === inputValue?.value) return;
+
+        if (queryParams) {
+            url.searchParams.set("search", queryParams);
+        } else {
+            url.searchParams.delete("search");
+        }
+        url.searchParams.set("page", "1");
+        window.location.href = url.toString();
+    });
+
+    clearForm?.addEventListener("click", () => {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("search");
+        url.searchParams.set("page", "1");
+        window.location.href = url.toString();
+    });
+</script>

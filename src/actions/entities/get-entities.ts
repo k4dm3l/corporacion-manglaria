@@ -8,9 +8,9 @@ export const getEntitiesPaginate = defineAction({
     input: z.object({
         contentType: z.enum(['project', 'blog']),
         search: z.string().optional(),
-        page: z.number()
+        page: z.string()
     }),
-    handler: async ({ contentType, search, page = 1 }): Promise<TGetEntitiesResponse> => {
+    handler: async ({ contentType, search, page = '1' }): Promise<TGetEntitiesResponse> => {
         try {
             const querySearch = search ? `&search=${search}` : ''
             const { data } = await fetcher.get(`/content/${contentType}?page=${page}${querySearch}`)
