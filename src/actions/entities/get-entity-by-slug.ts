@@ -10,10 +10,8 @@ export const getEntityBySlug = defineAction({
         slug: z.string()
     }),
     handler: async ({ contentType, slug }): Promise<TEntity> => {
-        console.log('here')
         try {
             const { data } = await fetcher.get(`/content/${contentType}/${slug}`)
-            console.log({data})
             return data
         } catch (e) {
             console.error(`[GET BY SLUG} contentType: ${contentType}, slug: ${slug}`)

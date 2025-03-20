@@ -5,20 +5,19 @@ import Pagination from "@/components/ui/pagination.astro";
 import InputSearch from "@/components/ui/input-search.astro";
 import { formatDate } from "@/utils/dates";
 
-const url = Astro.url
-const page = url.searchParams.get('page') ?? '1'
-const search = url.searchParams.get('search') ?? ''
+const url = Astro.url;
+const page = url.searchParams.get("page") ?? "1";
+const search = url.searchParams.get("search") ?? "";
 
 const { data, error } = await Astro.callAction(actions.getEntitiesPaginate, {
     contentType: "project",
     page,
-    search
+    search,
 });
 
 if (error) return Astro.redirect("/500");
 
-const showPagination = data.pagination.totalPages > 1
-
+const showPagination = data.pagination.totalPages > 1;
 ---
 
 <Layout title="Nuestro Blog">
@@ -31,7 +30,9 @@ const showPagination = data.pagination.totalPages > 1
                 >Proyectos</span
             >
         </h1>
-        <p class="text-center text-md font-normal max-w-xl mx-auto text-balance">
+        <p
+            class="text-center text-md font-normal max-w-xl mx-auto text-balance"
+        >
             our blogs are written from very research research and well known
             writers writers so that we can provide you the best blogs and
             articles articles for you to read them all along
@@ -68,5 +69,12 @@ const showPagination = data.pagination.totalPages > 1
         }
     </section>
 
-    {showPagination && <Pagination pages={data.pagination.totalPages ?? 1} class="hover:bg-broom-600/15 dark:hover:bg-broom-900/30"/>}
+    {
+        showPagination && (
+            <Pagination
+                pages={data.pagination.totalPages ?? 1}
+                class="hover:bg-broom-600/15 dark:hover:bg-broom-900/30"
+            />
+        )
+    }
 </Layout>
