@@ -71,9 +71,6 @@ const {class: classes} = Astro.props
         const currentSearchValue = decodeURIComponent(
             url.searchParams.get("search") ?? "",
         );
-
-        console.log(currentSearchValue, inputValue?.value);
-
         if (currentSearchValue === inputValue?.value) return;
 
         if (queryParams) {

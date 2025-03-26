@@ -1,34 +1,83 @@
 ---
-import { marked } from 'marked';
+import { marked } from "marked";
 import { actions } from "astro:actions";
 import Layout from "@/layouts/app-layout.astro";
+import { formatDate } from "@/utils/dates";
 
-const { slug = '' } = Astro.params
+const { slug = "" } = Astro.params;
 
-if(!slug) return Astro.redirect('/404')
+if (!slug) return Astro.redirect("/404");
 
 const { data, error } = await Astro.callAction(actions.getEntityBySlug, {
   slug,
-  contentType: 'blog'
-})
+  contentType: "blog",
+});
 
-if(error) return Astro.redirect('/404')
+if (error) return Astro.redirect("/404");
 
-const {content, author, title, createdAt,} = data
+const { content, author, title, createdAt, image } = data;
 
-const  htmlContent = content ? marked(content) : null
-
+const htmlContent = content ? marked(content) : null;
 ---
 
 <Layout title={`${title}`}>
-     <h1>{title}</h1>
-     <div class="prose prose-p:m-0 prose-p:p-0"  set:html={htmlContent}>
-      <footer class="p-3">
-        <p class="text-secondary-text text-xs font-light">
-            @{author?.name}
-        </p>
-        <p class="text-secondary-text text-xs font-light">
-            {createdAt}
-        </p>
+  <section class="section">
+    <header class="pt-10 md:pt-20 pb-10">
+      <button
+        id="go-back"
+        class="flex justify-center text-xs items-center gap-1 px-4 py-1 rounded-full cursor-pointer bg-broom-600/15 dark:bg-broom-900/30 hover:brightness-90"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-left"
+          ><path d="m15 18-6-6 6-6"></path></svg
+        >
+        Regresar
+      </button>
+    </header>
+    <h1
+      class="text-5xl text-balance md:text-6xl mb-8 text-secondary-text dark:text-white font-bold text-center"
+    >
+      {title}
+    </h1>
+    {
+      image && (
+        <img
+          src={image}
+          alt={title}
+          class="mx-auto aspect-video object-cover mb-20"
+        />
+      )
+    }
+    <div
+      class="prose prose-p:m-0 min-w-full prose-p:pb-6 text-secondary-text dark:text-secondary-dark-text dark:prose-strong:text-white"
+      set:html={htmlContent}
+    />
+    <footer class="p-3 flex items-end flex-col gap-2">
+      <p class="text-xs font-light">
+        @{author?.name}
+      </p>
+      <p class="text-xs font-light">
+        {formatDate(createdAt)}
+      </p>
     </footer>
+  </section>
 </Layout>
+
+<script>
+  import { $ } from "@/utils/dom-selector";
+
+  const button = $("#go-back");
+
+  button?.addEventListener("click", () => {
+    window.history.back();
+  });
+</script>
