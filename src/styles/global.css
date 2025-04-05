@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@theme {
+    --font-league: 'League Spartan Variable', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-montserrat: 'Montserrat Variable', sans-serif;
+}

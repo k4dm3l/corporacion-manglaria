@@ -1,5 +1,23 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
+import vercel from '@astrojs/vercel';
+import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite'
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()]
+  },
+  env: {
+    schema: {
+      PUBLIC_API_URL: envField.string({ context: "client", access: "public" }),
+    }
+  },
+  output: 'server',
+  adapter: vercel({
+    isr: {
+      expiration: 60 * 60 * 24,
+    }
+  }),
+  integrations: [react()],
+});
