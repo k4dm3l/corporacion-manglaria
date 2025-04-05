@@ -4,6 +4,8 @@ import vercel from '@astrojs/vercel';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite'
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
@@ -19,5 +21,13 @@ export default defineConfig({
       expiration: 60 * 60 * 24,
     }
   }),
-  integrations: [react()],
+  build: {
+    inlineStylesheets: 'always',
+  },
+
+  experimental: {
+    svg: true
+   },
+  integrations: [react(), sitemap()],
+  site: 'https://www.corporacionmanglaria.org/'
 });

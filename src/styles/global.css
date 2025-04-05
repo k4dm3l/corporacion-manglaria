@@ -5,31 +5,65 @@
     --font-league: 'League Spartan Variable', sans-serif;
     --font-poppins: 'Poppins', sans-serif;
     --font-montserrat: 'Montserrat Variable', sans-serif;
-    --color-primary-50: '#f5effb';
-    --color-primary-100: '#e5d9f5';
-    --color-primary-200: '#ceb3eb';
-    --color-primary-300: '#b28bdc';
-    --color-primary-400: '#9662cd';
-    --color-primary-500: '#7a3eb6';
-    --color-primary-600: '#682f9f';
-    --color-primary-700: '#582887';
-    --color-primary-800: '#4a226f';
-    --color-primary-900: '#3b1a57';
-    --color-primary-950: '#5f2b90';
-    --color-secondary-50: '#fffef4';
-    --color-secondary-100: '#fefbdc';
-    --color-secondary-200: '#fdf6b3';
-    --color-secondary-300: '#fbf08c';
-    --color-secondary-400: '#f9ea5f';
-    --color-secondary-500: '#f6e538';
-    --color-secondary-600: '#f6e12d';
-    --color-secondary-700: '#e0cc28';
-    --color-secondary-800: '#c7b523';
-    --color-secondary-900: '#aa9a1d';
-    --color-secondary-950: '#f6eb2d';
-    --color-accent-1: '#67fcba';
-    --color-accent-2: '#acf6d2';
-    --color-accent-3: '#ddfd40';
-    --color-accent-4: '#a0f87a';
-    --color-accent-5: '#6f55ec';
+
+    --color-primary-50: #f5effb;
+    --color-primary-100: #e5d9f5;
+    --color-primary-200: #ceb3eb;
+    --color-primary-300: #b28bdc;
+    --color-primary-400: #9662cd;
+    --color-primary-500: #7a3eb6;
+    --color-primary-600: #682f9f;
+    --color-primary-700: #582887;
+    --color-primary-800: #4a226f;
+    --color-primary-900: #3b1a57;
+    --color-primary-950: #5f2b90;
+
+    --color-secondary-50: #fffef4;
+    --color-secondary-100: #fefbdc;
+    --color-secondary-200: #fdf6b3;
+    --color-secondary-300: #fbf08c;
+    --color-secondary-400: #f9ea5f;
+    --color-secondary-500: #f6e538;
+    --color-secondary-600: #f6e12d;
+    --color-secondary-700: #e0cc28;
+    --color-secondary-800: #c7b523;
+    --color-secondary-900: #aa9a1d;
+    --color-secondary-950: #f6eb2d;
+
+    --color-accent-1: #67fcba;
+    --color-accent-2: #acf6d2;
+    --color-accent-3: #ddfd40;
+    --color-accent-4: #a0f87a;
+    --color-accent-5: #6f55ec;
 }
+
+
+.no-scrollbar {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+  }
+  .my-masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+  }
+  
+  /* Style your items */
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: grey;
+    margin-bottom: 30px;
+  }

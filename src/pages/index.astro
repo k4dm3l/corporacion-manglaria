@@ -1,11 +1,139 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { TEAM } from "@/consts/team";
+import Layout from "@/layouts/Layout.astro";
+import FacebookIcon from "@/assets/icons/facebook.svg";
+import InstagramIcon from "@/assets/icons/instagram.svg";
+import Header from "@/react/Header";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+export const prerender = true;
 ---
 
 <Layout>
-	<Welcome />
+	<Header client:load />
+	<section class="flex flex-col lg:flex-row py-28 px-8 items-center gap-4">
+		<div class="mb-10">
+			<h1 class="text-6xl lg:text-8xl lg:text-left leading-[100%] font-league font-bold text-center text-balance">Corporación Manglaria</h1>
+			<p class="text-2xl text-center text-balance lg:text-left ">“Tejiendo redes de esperanza en Buenaventura.”</p>
+		</div>
+		<picture class="w-full max-w-[500px] lg:max-w-[500px]">
+			<img src="/images/hero.webp" alt="imagen" />
+		</picture>
+	</section>
+	<section class="py-20">
+		<div>
+			<h2>Sobre Nosotros</h2>
+			<p>
+				Manglaria es un colectivo comprometido con la transformación
+				social desde una cultura de solidaridad, cuidado y esperanza.
+				Trabajamos por la dignificación de la vida en Buenaventura a
+				través del fortalecimiento de las capacidades culturales y
+				comunitarias del territorio, promoviendo procesos que conectan
+				la identidad ancestral con nuevas formas de desarrollo, sin
+				perder las raíces.
+			</p>
+		</div>
+		<div>
+			<article>
+				<h3>Misión</h3>
+				<p>
+					Contribuir a la construcción de una cultura solidaria y
+					transformadora mediante las artes, la innovación y proyectos
+					que mejoren las condiciones de vida en las comunidades,
+					promoviendo la paz, la sostenibilidad y el tejido social.
+				</p>
+			</article>
+			<article>
+				<h3>Visión</h3>
+				<p>
+					En cinco años, seremos un referente en el desarrollo
+					integral de comunidades en contextos de vulnerabilidad,
+					fortaleciendo sus capacidades desde la cultura, la
+					solidaridad y el respeto por las tradiciones, para impulsar
+					cambios duraderos basados en la equidad y el bienestar
+					colectivo.
+				</p>
+			</article>
+		</div>
+	</section>
+	<section>Proyecto</section>
+	<section>
+		<h2>Que Hacemos?</h2>
+		En Manglaria nos dedicamos a fortalecer el tejido social de Buenaventura
+		a través de proyectos comunitarios que integran la cultura, las artes, la
+		innovación y el cuidado colectivo. Implementamos acciones de intervención
+		social que promueven la identidad cultural, el desarrollo de capacidades
+		locales, la creación de entornos protectores y la defensa de los derechos
+		humanos. Trabajamos con comunidades vulnerables, especialmente con niñas,
+		niños, mujeres y población migrante, construyendo redes de apoyo y transformación
+		desde el territorio y para el territorio.
+	</section>
+	<section>Blog</section>
+	<section>
+		<h2>Numeros</h2>
+		5 Proyectos comunitarios ejecutados con enfoque en cultura, paz y cuidado.
+		🌍 7 Comunidades acompañadas en el territorio de Buenaventura. 👥 306 Personas
+		beneficiadas directamente a través de nuestras iniciativas. 🧒 30 Niñas y
+		niños participantes del semillero creativo Letras de Identidad en su primera
+		edición. 🕊️ 260 Personas comprometidas con la construcción de paz a través
+		de Voluntades para la Paz. 📱 6.178 Visualizaciones en redes sociales de
+		nuestras campañas por la paz y el cuidado.
+	</section>
+	<section class="px-8">
+		<h2 class="text-xl font-bold mb-4">Equipo</h2>
+		<div class="flex flex-row overflow-x-auto snap-x snap-mandatory px-2">
+			{
+				TEAM.map(({ src, name, alt }) => (
+					<article class="snap-center relative shrink-0 aspect-square w-[320px] h-[320px] md:w-[450px] md:h-[450px] overflow-hidden group scrollbar-hide">
+						<img
+							src={src}
+							alt={name}
+							class="aspect-square w-full h-full object-cover"
+						/>
+						<div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-b from-primary-900/20 to-primary-900 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+							<h3 class="font-semibold text-white text-4xl font-montserrat mb-2 transform translate-y-4 opacity-0 transition-all duration-500 delay-200 group-hover:opacity-100 group-hover:translate-y-0">
+								{name}
+							</h3>
+							<p class="text-sm text-slate-300 text-poppins transform translate-y-4 opacity-0 transition-all duration-500 delay-300 group-hover:opacity-100 group-hover:translate-y-0">
+								{alt}
+							</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section>
+		+57 316 1553638 manglariapacifico@gmail.com Carrera 56B #5-92
+		Buenaventura, Valle del Cauca
+	</section>
+	<footer>
+		<div>
+			<h3>Manglaria</h3>
+			<p>“donde la cultura, la paz y el cuidado se encuentran.”</p>
+			<div>
+				<a>
+					<FacebookIcon />
+				</a>
+				<a>
+					<InstagramIcon />
+				</a>
+			</div>
+		</div>
+		<div>
+			<h3>Enlaces</h3>
+			<ul>
+				<li>Link 1</li>
+				<li>Link 1</li>
+				<li>Link 1</li>
+				<li>Link 1</li>
+			</ul>
+			<ul>
+				<li>Link 1</li>
+				<li>Link 1</li>
+				<li>Link 1</li>
+				<li>Link 1</li>
+			</ul>
+		</div>
+	</footer>
 </Layout>
