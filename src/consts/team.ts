@@ -35,10 +35,10 @@ export const TEAM = [
         src: "/images/team/yeici.webp",
         alt: "Cofundadora y líder de proyectos que integran arte, cultura e innovación para transformar comunidades vulnerables."
     },
-    // {
-    //     id: 7,
-    //     name: "Margareth",
-    //     src: "/images/team/edna.webp",
-    //     alt: "description ----"
-    // },
+    {
+        id: 7,
+        name: "Margareth",
+        src: "/images/team/margareth.webp",
+        alt: "Cofundadora y contadora pública, lidera la gestión financiera con enfoque en sostenibilidad y cumplimiento."
+    },
 ]
