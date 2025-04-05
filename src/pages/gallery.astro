@@ -1,0 +1,10 @@
+---
+import AppLayout from '@/layouts/AppLayout.astro';
+import Gallery from '@/react/Gallery'
+
+export const prerender = true
+---
+
+<AppLayout>
+  <Gallery client:load />
+</AppLayout>
