@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex justify-between items-center p-4 bg-white border-b border-gray-100 fixed top-0 left-0 w-full z-50">
+      <header className="flex justify-between items-center p-4  w-full z-50">
         <a href="/">
         Manglaria
         </a>

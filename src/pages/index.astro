@@ -4,20 +4,42 @@ import Layout from "@/layouts/Layout.astro";
 import FacebookIcon from "@/assets/icons/facebook.svg";
 import InstagramIcon from "@/assets/icons/instagram.svg";
 import Header from "@/react/Header";
+import CircleLogo from "@/assets/icons/circle-logo.svg";
 
 export const prerender = true;
 ---
 
 <Layout>
 	<Header client:load />
-	<section class="flex flex-col lg:flex-row py-28 px-8 items-center gap-4">
-		<div class="mb-10">
-			<h1 class="text-6xl lg:text-8xl lg:text-left leading-[100%] font-league font-bold text-center text-balance">Corporación Manglaria</h1>
-			<p class="text-2xl text-center text-balance lg:text-left ">“Tejiendo redes de esperanza en Buenaventura.”</p>
+	<section
+		class="w-full min-h-screen flex items-center py-40 px-8 md:px-16 relative bg-gradient-to-b from-primary-50/50 to-white"
+	>
+		<div
+			class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:items-center max-w-7xl mx-auto"
+		>
+			<div class="flex justify-center lg:order-1">
+				<img
+					src="/images/hero.webp"
+					alt="Manglaria"
+					class="w-[500px] lg:w-auto"
+				/>
+			</div>
+			<div>
+				<h1
+					class="text-6xl text-primary-500 mb-10 lg:text-7xl lg:text-left font-montserrat font-bold text-center text-balance"
+				>
+					Corporación Manglaria
+				</h1>
+				<p
+					class="text-xl text-center text-balance lg:text-left text-slate-500"
+				>
+					"Tejemos redes de esperanza en Buenaventura, transformando
+					vidas desde la cultura, el cuidado y la identidad. Creemos
+					en una comunidad que se cuida, se reconoce y se levanta
+					unida. Somos Manglaria: territorio, memoria y futuro."
+				</p>
+			</div>
 		</div>
-		<picture class="w-full max-w-[500px] lg:max-w-[500px]">
-			<img src="/images/hero.webp" alt="imagen" />
-		</picture>
 	</section>
 	<section class="py-20">
 		<div>
@@ -80,20 +102,22 @@ export const prerender = true;
 	</section>
 	<section class="px-8">
 		<h2 class="text-xl font-bold mb-4">Equipo</h2>
-		<div class="flex flex-row overflow-x-auto snap-x snap-mandatory px-2">
+		<div
+			class="flex flex-row overflow-x-auto snap-x snap-mandatory lg:justify-center px-2 lg:flex-wrap max-w-7xl mx-auto"
+		>
 			{
 				TEAM.map(({ src, name, alt }) => (
-					<article class="snap-center relative shrink-0 aspect-square w-[320px] h-[320px] md:w-[450px] md:h-[450px] overflow-hidden group scrollbar-hide">
+					<article class="snap-center relative shrink-0 aspect-square w-[380px] h-[380px] lg:flex-1/3 lg:max-w-1/3 lg:h-auto overflow-hidden group scrollbar-hide">
 						<img
 							src={src}
 							alt={name}
 							class="aspect-square w-full h-full object-cover"
 						/>
-						<div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-b from-primary-900/20 to-primary-900 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-							<h3 class="font-semibold text-white text-4xl font-montserrat mb-2 transform translate-y-4 opacity-0 transition-all duration-500 delay-200 group-hover:opacity-100 group-hover:translate-y-0">
+						<div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-b from-primary-900/20 to-primary-900 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
+							<h3 class="font-semibold text-white text-4xl font-montserrat mb-2 transform translate-y-4 lg:opacity-0 transition-all duration-500 delay-200 lg:group-hover:opacity-100 lg:group-hover:translate-y-0">
 								{name}
 							</h3>
-							<p class="text-sm text-slate-300 text-poppins transform translate-y-4 opacity-0 transition-all duration-500 delay-300 group-hover:opacity-100 group-hover:translate-y-0">
+							<p class="text-sm text-slate-300 transform translate-y-4 lg:opacity-0 transition-all duration-500 delay-300 lg:group-hover:opacity-100 lg:group-hover:translate-y-0">
 								{alt}
 							</p>
 						</div>
@@ -107,33 +131,88 @@ export const prerender = true;
 		+57 316 1553638 manglariapacifico@gmail.com Carrera 56B #5-92
 		Buenaventura, Valle del Cauca
 	</section>
-	<footer>
-		<div>
-			<h3>Manglaria</h3>
-			<p>“donde la cultura, la paz y el cuidado se encuentran.”</p>
-			<div>
-				<a>
-					<FacebookIcon />
-				</a>
-				<a>
-					<InstagramIcon />
-				</a>
+	<footer
+		class="bg-primary-900 pt-20 pb-10 px-8 md:px-16 relative overflow-hidden"
+	>
+		<div class="flex flex-col items-center">
+			<div class="flex flex-col items-center">
+				<h3
+					class="text-white text-4xl font-montserrat font-bold text-center mb-2"
+				>
+					<span class="font-extralight">Corporación</span>
+					<span
+						class="bg-secondary-500 -skew-x-6 inline-block px-3 py-2 text-primary-900"
+						>Manglaria</span
+					>
+				</h3>
+				<p
+					class="text-white mb-4 text-lg opacity-60 text-center md:text-left"
+				>
+					“donde la cultura, la paz y el cuidado se encuentran.”
+				</p>
+				<div class="flex gap-4 justify-center w-full">
+					<a
+						class="opacity-60 duration-150 transition-all hover:opacity-70 hover:scale-105"
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.facebook.com/share/1BTwsFXQUK/?mibextid=wwXIfr"
+					>
+						<FacebookIcon class="stroke-white size-6" />
+					</a>
+					<a
+						class="opacity-60 duration-150 transition-all hover:opacity-70 hover:scale-105"
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.instagram.com/manglariapacifico?igsh=MTc2cmFmajY3M2YzdQ%3D%3D&utm_source=qr"
+					>
+						<InstagramIcon class="stroke-white size-6" />
+					</a>
+				</div>
 			</div>
+			<nav class="mt-10 mb-20 grid grid-cols-2 gap-4 md:grid-cols-[repeat(8,auto)] md:gap-x-5">
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Inicio</a
+				>
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Sobre Nosotros</a
+				>
+
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Proyecto</a
+				>
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Que Hacemos?</a
+				>
+
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Blog</a
+				>
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Nuestros números</a
+				>
+
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Proyectos</a
+				>
+				<a
+					class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+					>Equipo</a
+				>
+			</nav>
 		</div>
-		<div>
-			<h3>Enlaces</h3>
-			<ul>
-				<li>Link 1</li>
-				<li>Link 1</li>
-				<li>Link 1</li>
-				<li>Link 1</li>
-			</ul>
-			<ul>
-				<li>Link 1</li>
-				<li>Link 1</li>
-				<li>Link 1</li>
-				<li>Link 1</li>
-			</ul>
+		<div class="text-center text text-secondary-900/70">
+			© {new Date().getFullYear()} Corporación Manglaria. Todos los derechos
+			reservados.
 		</div>
+		<CircleLogo
+			class="absolute hidden lg:block size-[500px] opacity-5 -right-[100px] -bottom-[100px] -rotate-45"
+		/>
 	</footer>
 </Layout>
