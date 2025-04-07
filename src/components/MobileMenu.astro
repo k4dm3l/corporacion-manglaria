@@ -1,0 +1,71 @@
+---
+import { LANDING_LINKS } from "@/consts/links";
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={[className]}>
+    <button id="open-menu">
+        <slot />
+    </button>
+    <div
+        id="nav"
+        class="w-full hidden h-screen flex-col fixed top-0 left-0 z-50 bg-primary-900 py-10"
+    >
+        <nav
+            class="flex-1 w-full flex items-center gap-4 flex-col 00 justify-center overflow-auto py-10"
+        >
+            {
+                LANDING_LINKS.map(({ text, hash }: any) => (
+                    <a
+                        href={hash}
+                        class="text-white/90 links text-2xl hover:text-white hover:underline"
+                    >
+                        {text}
+                    </a>
+                ))
+            }
+        </nav>
+        <button id="close-menu" class="text-white absolute top-6 right-6">
+            <svg
+                class="size-10"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-x-icon lucide-x"
+                ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+            >
+        </button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const $nav = document.querySelector("#nav");
+        const $openButton = document.querySelector("#open-menu");
+        const $closeButton = document.querySelector("#close-menu");
+        const $body = document.body;
+        const $links = document.querySelectorAll(".links");
+
+        const closeNav = () => {
+            $nav?.classList.remove("menuIsVisible");
+            $body.classList.remove("overflow-hidden");
+        };
+
+        $openButton?.addEventListener("click", () => {
+            $nav?.classList.add("menuIsVisible");
+            $body?.classList.add("overflow-hidden");
+        });
+
+        $closeButton?.addEventListener("click", closeNav);
+
+        $links.forEach((link) => {
+            link.addEventListener("click", closeNav);
+        });
+    });
+</script>

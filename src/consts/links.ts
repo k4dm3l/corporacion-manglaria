@@ -6,7 +6,7 @@ export const FOTER_LINKS = [
     },
     {
         id: 2,
-        text: "Sobre Nosotros",
+        text: "Nosotros",
         hash: "/#about",
     },
     {
@@ -21,17 +21,17 @@ export const FOTER_LINKS = [
     },
     {
         id: 5,
-        text: "Nuestro Blog",
+        text: "Blog",
         link: "/blog",
     },
     {
         id: 6,
-        text: "Nuestros Números",
+        text: "Impacto",
         hash: "/#numbers",
     },
     {
         id: 7,
-        text: "Nuestro Equipo",
+        text: "Equipo",
         hash: "/#team",
     },
     {
@@ -47,37 +47,75 @@ export const LANDING_LINKS = [
     {
         id: 1,
         text: "Inicio",
-        hash: "#home",
+        hash: "/#home",
     },
     {
         id: 2,
         text: "Nosotros",
-        hash: "#about",
+        hash: "/#about",
     },
     {
         id: 3,
         text: "Proyectos",
-        link: "#prjects",
+        hash: "/#prjects",
     },
     {
         id: 4,
         text: "¿Qué Hacemos?",
-        hash: "#work",
+        hash: "/#work",
     },
     {
         id: 5,
         text: "Blog",
-        link: "#blog",
+        hash: "/#blog",
     },
     {
         id: 6,
         text: "Impacto",
-        hash: "#numbers",
+        hash: "/#numbers",
     },
     {
         id: 7,
-        text: "Nuestro Equipo",
-        hash: "#team",
+        text: "Equipo",
+        hash: "/#team",
+    },
+    {
+        id: 8,
+        text: "Galeria",
+        hash: "/gallery",
+    },
+]
+
+export const   APP_LINKS = [
+    {
+        id: 2,
+        text: "Nosotros",
+        hash: "/#about",
+    },
+    {
+        id: 3,
+        text: "Proyectos",
+        hash: "/#prjects",
+    },
+    {
+        id: 4,
+        text: "¿Qué Hacemos?",
+        hash: "/#work",
+    },
+    {
+        id: 5,
+        text: "Blog",
+        hash: "/#blog",
+    },
+    {
+        id: 6,
+        text: "Impacto",
+        hash: "/#numbers",
+    },
+    {
+        id: 7,
+        text: "Equipo",
+        hash: "/#team",
     },
     {
         id: 8,

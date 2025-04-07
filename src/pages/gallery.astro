@@ -1,4 +1,5 @@
 ---
+import Nav from "@/components/Nav.astro";
 import Layout from "@/layouts/Layout.astro";
 import GalleryView from "@/react/Gallery";
 
@@ -6,13 +7,14 @@ export const prerender = true;
 ---
 
 <Layout title="Galeria de fotos">
+    <Nav />
     <h2
-        class="text-5xl md:text-6xl font-montserrat font-bold text-black text-center mb-2"
+        class="text-5xl mt-10 md:text-6xl font-montserrat font-bold text-black text-center mb-2"
     >
         Galeria de Fotos
     </h2>
     <p
-      class="text-xl mb-4 text-balance text-center md:text-lg leading-[180%] text-slate-600"
+        class="text-xl mb-4 text-balance text-center md:text-lg leading-[180%] text-slate-600"
     >
         mágenes de nuestros talleres, eventos y actividades comunitarias.
     </p>
