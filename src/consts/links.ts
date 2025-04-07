@@ -12,7 +12,7 @@ export const FOTER_LINKS = [
     {
         id: 3,
         text: "Proyectos",
-        link: "/prjects",
+        link: "/projects",
     },
     {
         id: 4,
@@ -57,7 +57,7 @@ export const LANDING_LINKS = [
     {
         id: 3,
         text: "Proyectos",
-        hash: "/#prjects",
+        hash: "/#projects",
     },
     {
         id: 4,
@@ -86,7 +86,7 @@ export const LANDING_LINKS = [
     },
 ]
 
-export const   APP_LINKS = [
+export const APP_LINKS = [
     {
         id: 2,
         text: "Nosotros",
@@ -95,7 +95,7 @@ export const   APP_LINKS = [
     {
         id: 3,
         text: "Proyectos",
-        hash: "/#prjects",
+        hash: "/projects",
     },
     {
         id: 4,
@@ -105,7 +105,7 @@ export const   APP_LINKS = [
     {
         id: 5,
         text: "Blog",
-        hash: "/#blog",
+        hash: "/blog",
     },
     {
         id: 6,

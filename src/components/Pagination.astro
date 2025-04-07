@@ -1,0 +1,31 @@
+---
+// Props
+const { currentPage = 1, totalPages = 1 } = Astro.props;
+
+const prevPage = Math.max(currentPage - 1, 1);
+const nextPage = Math.min(currentPage + 1, totalPages);
+
+function getPageUrl(page: number) {
+  const url = new URL(Astro.url);
+  url.searchParams.set("page", page.toString());
+  return url.pathname + url.search;
+}
+---
+<div class="flex justify-center items-center gap-4 mt-8">
+  <a
+    href={getPageUrl(prevPage)}
+    class="px-4 py-2 rounded bg-primary-900 text-white disabled:opacity-50"
+    aria-disabled={currentPage <= 1}
+    class:list={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
+  >
+    ← Anterior
+  </a>
+  <a
+    href={getPageUrl(nextPage)}
+    class="px-4 py-2 rounded bg-primary-900 text-white disabled:opacity-50"
+    aria-disabled={currentPage >= totalPages}
+    class:list={currentPage >= totalPages ? 'pointer-events-none opacity-50' : ''}
+  >
+    Siguiente →
+  </a>
+</div>

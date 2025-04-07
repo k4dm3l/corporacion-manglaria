@@ -3,6 +3,7 @@ import "@fontsource-variable/league-spartan";
 import "@fontsource/poppins";
 import "@fontsource-variable/montserrat";
 import "../styles/global.css";
+import { ClientRouter } from 'astro:transitions';
 
 import Footer from "@/components/Footer.astro";
 
@@ -56,6 +57,7 @@ const titleTemplate = title
 		/>
 		<meta name="twitter:image" content="" />
 		<title>{titleTemplate}</title>
+		<ClientRouter />
 	</head>
 	<body class="text-poppins">
 		<slot />

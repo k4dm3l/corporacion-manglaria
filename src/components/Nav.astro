@@ -5,11 +5,14 @@ import MenuIcon from "@/assets/icons/menu.svg";
 import CircleLogo from "@/assets/icons/circle-logo.svg";
 ---
 
-
-<header class="h-20 flex justify-between items-center w-full relative z-50 px-8 border-b border-b-slate-100">
+<header
+    class="h-20 flex justify-between items-center w-full relative z-50 px-8 border-b border-b-slate-100"
+>
     <a href="/" class="flex items-center gap-2">
-        <CircleLogo class='size-10' />
-        <span class="text-primary-900 text-2xl font-bold hidden lg:inline-block">
+        <CircleLogo class="size-12" />
+        <span
+            class="text-primary-900 text-2xl font-bold hidden lg:inline-block"
+        >
             Manglaria
         </span>
     </a>
@@ -25,7 +28,7 @@ import CircleLogo from "@/assets/icons/circle-logo.svg";
             ))
         }
     </nav>
-    <MobileMenu class="md:hidden">
+    <MobileMenu class="md:hidden" links={APP_LINKS}>
         <MenuIcon class="fill-primary-900 stroke-primary-900 size-10" />
     </MobileMenu>
 </header>

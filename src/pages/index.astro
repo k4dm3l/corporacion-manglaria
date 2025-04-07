@@ -7,6 +7,8 @@ import Work from "@/components/Work.astro";
 import Layout from "@/layouts/Layout.astro";
 import About from "@/components/About.astro";
 import Hero from "@/components/Hero.astro";
+import LatestEntities from "@/components/LatestEntities.astro";
+import Skeleton from "@/components/Skeleton.astro";
 
 export const prerender = true;
 ---
@@ -14,20 +16,26 @@ export const prerender = true;
 <Layout>
 	<Hero />
 	<About />
-	<section>
+	<section class="px-8 bg-gradient-to-b pt-20 pb-10" id="projects">
 		<h2
 			class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-12 text-center"
 		>
 			Ultimos Proyectos
 		</h2>
+		<LatestEntities server:defer entity="project" link="/projects" text="Ver todos">
+			<Skeleton slot="fallback"/>
+		</LatestEntities>
 	</section>
 	<Work />
-	<section class="px-8">
+	<section class="px-8 bg-gradient-to-b pt-20 pb-10" id="blog">
 		<h2
 			class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-12 text-center"
 		>
 			Ultimas publicaciones
 		</h2>
+		<LatestEntities server:defer entity="blog" link="/blog" text="Ver todos">
+			<Skeleton slot="fallback"/>
+		</LatestEntities>
 	</section>
 
 	<Numbers />

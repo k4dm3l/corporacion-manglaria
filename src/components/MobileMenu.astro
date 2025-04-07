@@ -1,7 +1,5 @@
 ---
-import { LANDING_LINKS } from "@/consts/links";
-
-const { class: className } = Astro.props;
+const { class: className, links = [] } = Astro.props;
 ---
 
 <div class:list={[className]}>
@@ -16,7 +14,7 @@ const { class: className } = Astro.props;
             class="flex-1 w-full flex items-center gap-4 flex-col 00 justify-center overflow-auto py-10"
         >
             {
-                LANDING_LINKS.map(({ text, hash }: any) => (
+                links.map(({ text, hash }: any) => (
                     <a
                         href={hash}
                         class="text-white/90 links text-2xl hover:text-white hover:underline"

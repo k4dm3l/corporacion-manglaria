@@ -20,6 +20,7 @@
     "@types/react-dom": "^19.1.1",
     "astro": "^5.6.0",
     "axios": "^1.8.4",
+    "marked": "^15.0.8",
     "photoswipe": "^5.4.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
