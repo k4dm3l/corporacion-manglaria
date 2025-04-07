@@ -1,5 +1,5 @@
-export const GALLERY = {
-    letras: [
+export const GALLERY: Record<string, any> = {
+    Letras: [
         {
             id: 1,
             src: "/images/letras/1.webp",
@@ -92,7 +92,7 @@ export const GALLERY = {
             height: 1280,
         }
     ],
-    mural: [
+    Mural: [
         {
             id: 1,
             src: "/images/mural/1.webp",
@@ -178,7 +178,7 @@ export const GALLERY = {
             height: 960,
         }
     ],
-    nido: [
+    Nido: [
         {
             id: 1,
             src: "/images/nido/1.webp",
@@ -229,7 +229,7 @@ export const GALLERY = {
             height: 1280,
         }
     ],
-    paz: [
+    Paz: [
         {
             id: 1,
             src: "/images/paz/1.webp",
@@ -267,7 +267,7 @@ export const GALLERY = {
             height: 853,
         },
     ],
-    sororidad: [
+    Sororidad: [
         {
             id: 1,
             src: "/images/sororidad/1.webp",
@@ -398,3 +398,5 @@ export const GALLERY = {
 }
 
 export const GALLERY_ALL = Object.values(GALLERY).flat()
+
+export const CATEGORIES = [...Object.keys(GALLERY), 'Todas']
