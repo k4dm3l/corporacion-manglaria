@@ -6,10 +6,11 @@ import "../styles/global.css";
 
 import Footer from "@/components/Footer.astro";
 
-const {
-	title = 'Corporación Manglaria', description
-} = Astro.props;
+const { title, description } = Astro.props;
 
+const titleTemplate = title
+	? `${title} | Corporación Manglaria`
+	: "Corporación Manglaria";
 ---
 
 <!doctype html>
@@ -19,27 +20,42 @@ const {
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Colectivo comunitario de Buenaventura que impulsa procesos sociales y culturales para transformar el territorio desde el cuidado, la solidaridad y los derechos humanos.">
-		<meta name="keywords" content="Buenaventura, colectivo, niñez, migración, entornos protectores, derechos humanos, cultura, territorio">
+		<meta
+			name="description"
+			content="Colectivo comunitario de Buenaventura que impulsa procesos sociales y culturales para transformar el territorio desde el cuidado, la solidaridad y los derechos humanos."
+		/>
+		<meta
+			name="keywords"
+			content="Buenaventura, colectivo, niñez, migración, entornos protectores, derechos humanos, cultura, territorio"
+		/>
+		<meta
+			property="og:url"
+			content="https://www.corporacionmanglaria.org/"
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={titleTemplate} />
+		<meta
+			property="og:description"
+			content="Colectivo comunitario de Buenaventura que impulsa procesos sociales y culturales para transformar el territorio desde el cuidado, la solidaridad y los derechos humanos."
+		/>
+		<meta property="og:image" content="" />
+		<meta property="og:site_name" content={titleTemplate} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_ES" />
 
-		<!-- Facebook Meta Tags -->
-		<meta property="og:url" content="https://www.corporacionmanglaria.org/">
-		<meta property="og:type" content="website">
-		<meta property="og:title" content={title}>
-		<meta property="og:description" content="Colectivo comunitario de Buenaventura que impulsa procesos sociales y culturales para transformar el territorio desde el cuidado, la solidaridad y los derechos humanos.">
-		<meta property="og:image" content="">
-		<meta property="og:site_name" content={title}>
-		<meta property="og:type" content="website">
-    <meta property="og:locale" content="es_ES">
-
-		<!-- Twitter Meta Tags -->
-		<meta name="twitter:card" content="summary_large_image">
-		<meta property="twitter:domain" content="corporacionmanglaria.org">
-		<meta property="twitter:url" content="https://www.corporacionmanglaria.org/">
-		<meta name="twitter:title" content="Corporación Manglaria">
-		<meta name="twitter:description" content="Colectivo comunitario de Buenaventura que impulsa procesos sociales y culturales para transformar el territorio desde el cuidado, la solidaridad y los derechos humanos.">
-		<meta name="twitter:image" content="">
-		<title>Corporación Manglaria</title>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="corporacionmanglaria.org" />
+		<meta
+			property="twitter:url"
+			content="https://www.corporacionmanglaria.org/"
+		/>
+		<meta name="twitter:title" content={titleTemplate} />
+		<meta
+			name="twitter:description"
+			content="Colectivo comunitario de Buenaventura que impulsa procesos sociales y culturales para transformar el territorio desde el cuidado, la solidaridad y los derechos humanos."
+		/>
+		<meta name="twitter:image" content="" />
+		<title>{titleTemplate}</title>
 	</head>
 	<body class="text-poppins">
 		<slot />

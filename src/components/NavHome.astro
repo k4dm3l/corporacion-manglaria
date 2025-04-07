@@ -1,0 +1,81 @@
+---
+import { LANDING_LINKS } from "@/consts/links";
+---
+
+<div class="absolute top-0 right-0 z-20 w-full">
+    <button id="open-menu" class="absolute top-6 right-6 md:hidden">
+        <svg
+            class="size-10 text-white"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-menu-icon lucide-menu"
+            ><line x1="4" x2="20" y1="12" y2="12"></line><line
+                x1="4"
+                x2="20"
+                y1="6"
+                y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+        >
+    </button>
+    <nav
+        id="nav"
+        class="hidden md:w-full md:h-20 md:flex md:gap-6 md:items-center md:justify-center md:py-6 md:text-base"
+    >
+        {
+            LANDING_LINKS.map(({ text, hash }: any) => (
+                <a
+                    href={hash}
+                    class="text-white/90 links text-xl md:text-sm lg:text-base hover:text-white hover:underline"
+                >
+                    {text}
+                </a>
+            ))
+        }
+        <button id="close-menu" class="text-white absolute top-6 right-6 md:hidden">
+            <svg
+                class="size-10"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-x-icon lucide-x"
+                ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+            >
+        </button>
+    </nav>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const nav = document.querySelector("#nav");
+        const $openButton = document.querySelector("#open-menu");
+        const $closeButton = document.querySelector("#close-menu");
+        const $body = document.body;
+        const $links = document.querySelectorAll(".links");
+
+        const closeNav = () => {
+            nav?.classList.remove("menuIsVisible");
+            $body.classList.remove("overflow-hidden");
+        };
+
+        $openButton?.addEventListener("click", () => {
+            nav?.classList.add("menuIsVisible");
+            $body?.classList.add("overflow-hidden");
+        });
+
+        $closeButton?.addEventListener("click", closeNav);
+
+        $links.forEach((link) => {
+            link.addEventListener("click", closeNav);
+        });
+    });
+</script>

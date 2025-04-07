@@ -1,22 +1,27 @@
 ---
 import WaveIcon from "@/assets/icons/wave.svg";
+import NavHome from "./NavHome.astro";
 ---
-<section id="home" class="min-h-screen w-full px-4 bg-[url('/images/hero2.webp')] flex flex-col items-center justify-center">
-    <div class="relative z-10 max-w-2xl">
-        <h1
-            class="text-5xl sm:text-6xl text-secondary-600 mb-10 md:text-8xl font-montserrat font-bold text-center text-balance"
-        >
-            Corporación Manglaria
-        </h1>
-        <p
-            class="text-xl text-center text-balance text-secondary-500/80 leading-[180%]"
-        >
-            "Tejemos redes de esperanza en Buenaventura, transformando
-            vidas desde la cultura, el cuidado y la identidad. Creemos
-            en una comunidad que se cuida, se reconoce y se levanta
-            unida. Somos Manglaria: territorio, memoria y futuro."
-        </p>
+
+<section id="home" class="min-h-screen w-full bg-[url('/images/hero2.webp')]">
+    <NavHome />
+    <div class="flex absolute top-0 left-0 px-4 flex-col items-center min-h-screen justify-center w-full h-full">
+        <div class="relative z-10 max-w-2xl">
+            <h1
+                class="text-5xl sm:text-7xl text-secondary-600 mb-10 md:text-8xl font-montserrat font-bold text-center text-balance"
+            >
+                Corporación Manglaria
+            </h1>
+            <p
+                class="text-xl text-center text-balance text-white/60 leading-[180%]"
+            >
+                "Tejemos redes de esperanza en Buenaventura, transformando
+                vidas desde la cultura, el cuidado y la identidad. Creemos
+                en una comunidad que se cuida, se reconoce y se levanta
+                unida. Somos Manglaria: territorio, memoria y futuro."
+            </p>
+        </div>
+        <div class="w-full h-full absolute top-0 inset-x-0 bg-primary-900/90" />
+        <WaveIcon class="absolute h-40 w-full -bottom-1 inset-x-0" />
     </div>
-    <div class="w-full h-full absolute top-0 inset-x-0 bg-primary-900/80" />
-    <WaveIcon class="absolute h-40 w-full -bottom-1 inset-x-0" />
 </section>
