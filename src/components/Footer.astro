@@ -2,6 +2,7 @@
 import FacebookIcon from "@/assets/icons/facebook.svg";
 import InstagramIcon from "@/assets/icons/instagram.svg";
 import CircleLogo from "@/assets/icons/circle-logo.svg";
+import { FOTER_LINKS } from "@/consts/links";
 ---
 
 <footer
@@ -45,47 +46,22 @@ import CircleLogo from "@/assets/icons/circle-logo.svg";
         <nav
             class="mt-10 mb-20 grid grid-cols-2 gap-4 md:grid-cols-[repeat(8,auto)] md:gap-x-5"
         >
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Inicio</a
-            >
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Sobre Nosotros</a
-            >
-
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Proyecto</a
-            >
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Que Hacemos?</a
-            >
-
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Blog</a
-            >
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Nuestros números</a
-            >
-
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Proyectos</a
-            >
-            <a
-                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
-                >Equipo</a
-            >
+            {
+                FOTER_LINKS.map(({ text, link, hash }: any) => (
+                    <a
+                        href={hash ? hash : link}
+                        class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                    >
+                        {text}
+                    </a>
+                ))
+            }
         </nav>
     </div>
     <div class="text-center text text-secondary-900/70">
         © {new Date().getFullYear()} Corporación Manglaria. Todos los derechos reservados.
     </div>
     <CircleLogo
-        class="absolute hidden lg:block size-[500px] opacity-5 -right-[100px] -bottom-[100px] -rotate-45"
+        class="absolute pointer-events-none hidden lg:block size-[500px] opacity-5 -right-[100px] -bottom-[100px] -rotate-45"
     />
 </footer>

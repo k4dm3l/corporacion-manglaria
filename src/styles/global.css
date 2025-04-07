@@ -37,6 +37,10 @@
     --color-accent-5: #6f55ec;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 
 .no-scrollbar {
     scrollbar-width: none;

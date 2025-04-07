@@ -7,10 +7,15 @@ export const prerender = true;
 
 <Layout title="Corporación Manglaria | Galeria de fotos">
     <h2
-        class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-12 text-center"
+        class="text-5xl md:text-6xl font-montserrat font-bold text-black text-center mb-6"
     >
         Galeria de Fotos
     </h2>
+    <p
+      class="text-xl  mb-12 text-balance text-center md:text-lg leading-[180%] text-slate-600"
+    >
+        mágenes de nuestros talleres, eventos y actividades comunitarias.
+    </p>
     <section class="pb-40">
         <GalleryView client:load />
     </section>
