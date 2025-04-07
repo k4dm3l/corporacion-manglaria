@@ -1,0 +1,36 @@
+---
+import { TEAM } from "@/consts/team";
+---
+
+<section class="px-8 py-40">
+    <div class="max-w-7xl mx-auto">
+        <h2
+            class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-12 text-center"
+        >
+            Nuestro Equipo
+        </h2>
+        <div
+            class="flex flex-row no-scrollbar overflow-x-auto snap-x snap-mandatory lg:justify-center lg:flex-wrap"
+        >
+            {
+                TEAM.map(({ src, name, alt }) => (
+                    <article class="snap-center relative shrink-0 aspect-square w-[380px] h-[380px] lg:flex-1/3 lg:max-w-1/3 lg:h-auto overflow-hidden group scrollbar-hide">
+                        <img
+                            src={src}
+                            alt={name}
+                            class="aspect-square w-full h-full object-cover"
+                        />
+                        <div class="absolute inset-0 flex flex-col justify-end px-4 py-10 bg-gradient-to-b from-primary-900/20 to-primary-900 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
+                            <h3 class="font-semibold text-white text-4xl font-montserrat mb-2 transform translate-y-4 lg:opacity-0 transition-all duration-500 delay-200 lg:group-hover:opacity-100 lg:group-hover:translate-y-0">
+                                {name}
+                            </h3>
+                            <p class="text-bases text-slate-300 transform translate-y-4 lg:opacity-0 transition-all duration-500 delay-300 lg:group-hover:opacity-100 lg:group-hover:translate-y-0">
+                                {alt}
+                            </p>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>

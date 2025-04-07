@@ -1,0 +1,17 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import GalleryView from "@/react/Gallery";
+
+export const prerender = true;
+---
+
+<Layout title="Corporación Manglaria | Galeria de fotos">
+    <h2
+        class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-12 text-center"
+    >
+        Galeria de Fotos
+    </h2>
+    <section class="pb-40">
+        <GalleryView client:load />
+    </section>
+</Layout>

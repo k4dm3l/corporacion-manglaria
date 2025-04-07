@@ -1,0 +1,91 @@
+---
+import FacebookIcon from "@/assets/icons/facebook.svg";
+import InstagramIcon from "@/assets/icons/instagram.svg";
+import CircleLogo from "@/assets/icons/circle-logo.svg";
+---
+
+<footer
+    class="bg-primary-900 pt-20 pb-10 px-8 md:px-16 relative overflow-hidden"
+>
+    <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center">
+            <h3
+                class="text-white text-4xl font-montserrat font-bold text-center mb-2"
+            >
+                <span class="font-extralight">Corporación</span>
+                <span
+                    class="bg-secondary-500 -skew-x-6 inline-block px-3 py-2 text-primary-900"
+                    >Manglaria</span
+                >
+            </h3>
+            <p
+                class="text-white mb-4 text-lg opacity-60 text-center md:text-left"
+            >
+                “donde la cultura, la paz y el cuidado se encuentran.”
+            </p>
+            <div class="flex gap-4 justify-center w-full">
+                <a
+                    class="opacity-60 duration-150 transition-all hover:opacity-70 hover:scale-105"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.facebook.com/share/1BTwsFXQUK/?mibextid=wwXIfr"
+                >
+                    <FacebookIcon class="stroke-white size-6" />
+                </a>
+                <a
+                    class="opacity-60 duration-150 transition-all hover:opacity-70 hover:scale-105"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.instagram.com/manglariapacifico?igsh=MTc2cmFmajY3M2YzdQ%3D%3D&utm_source=qr"
+                >
+                    <InstagramIcon class="stroke-white size-6" />
+                </a>
+            </div>
+        </div>
+        <nav
+            class="mt-10 mb-20 grid grid-cols-2 gap-4 md:grid-cols-[repeat(8,auto)] md:gap-x-5"
+        >
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Inicio</a
+            >
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Sobre Nosotros</a
+            >
+
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Proyecto</a
+            >
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Que Hacemos?</a
+            >
+
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Blog</a
+            >
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Nuestros números</a
+            >
+
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Proyectos</a
+            >
+            <a
+                class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"
+                >Equipo</a
+            >
+        </nav>
+    </div>
+    <div class="text-center text text-secondary-900/70">
+        © {new Date().getFullYear()} Corporación Manglaria. Todos los derechos reservados.
+    </div>
+    <CircleLogo
+        class="absolute hidden lg:block size-[500px] opacity-5 -right-[100px] -bottom-[100px] -rotate-45"
+    />
+</footer>

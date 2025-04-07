@@ -3,6 +3,13 @@ import "@fontsource-variable/league-spartan";
 import "@fontsource/poppins";
 import "@fontsource-variable/montserrat";
 import "../styles/global.css";
+
+import Footer from "@/components/Footer.astro";
+
+const {
+	title = 'Corporación Manglaria', description
+} = Astro.props;
+
 ---
 
 <!doctype html>
@@ -18,10 +25,10 @@ import "../styles/global.css";
 		<!-- Facebook Meta Tags -->
 		<meta property="og:url" content="https://www.corporacionmanglaria.org/">
 		<meta property="og:type" content="website">
-		<meta property="og:title" content="Corporación Manglaria">
+		<meta property="og:title" content={title}>
 		<meta property="og:description" content="Colectivo comunitario de Buenaventura que impulsa procesos sociales y culturales para transformar el territorio desde el cuidado, la solidaridad y los derechos humanos.">
 		<meta property="og:image" content="">
-		<meta property="og:site_name" content="Corporación Manglaria">
+		<meta property="og:site_name" content={title}>
 		<meta property="og:type" content="website">
     <meta property="og:locale" content="es_ES">
 
@@ -36,6 +43,7 @@ import "../styles/global.css";
 	</head>
 	<body class="text-poppins">
 		<slot />
+		<Footer />
 	</body>
 </html>
 

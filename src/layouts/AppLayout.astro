@@ -3,6 +3,8 @@ import "@fontsource-variable/league-spartan";
 import "@fontsource/poppins";
 import "@fontsource-variable/montserrat";
 
+import Footer from "@/components/Footer.astro";
+
 const {
 	title, description
 } = Astro.props;
@@ -39,6 +41,7 @@ const {
 	</head>
 	<body class="text-poppins">
 		<slot />
+		<Footer />
 	</body>
 </html>
 

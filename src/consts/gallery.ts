@@ -398,6 +398,3 @@ export const GALLERY = {
 }
 
 export const GALLERY_ALL = Object.values(GALLERY).flat()
-    .map(value => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
