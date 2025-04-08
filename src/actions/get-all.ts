@@ -9,5 +9,8 @@ export const getAll = defineAction({
         page: z.string().optional().default('1'),
         limit: z.string().optional().default('10'),
     }),
-    handler: async ({ type, page, limit }) => fetcher.get(`/${type}?page=${page}&limit=${limit}`).then(res => res.data)
+    handler: async ({ type, page, limit }) => {
+        console.log(`/${type}?page=${page}&limit=${limit}`)
+        return fetcher.get(`/${type}?page=${page}&limit=${limit}`).then(res => res.data)
+    }
 })

@@ -13,6 +13,7 @@ export default defineConfig({
   env: {
     schema: {
       PUBLIC_API_URL: envField.string({ context: "client", access: "public" }),
+      PUBLIC_API_TOKEN: envField.string({ context: "client", access: "public" }),
     }
   },
   output: 'server',
