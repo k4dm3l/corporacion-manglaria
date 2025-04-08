@@ -43,7 +43,7 @@ const { class: className, links = [] } = Astro.props;
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("astro:page-load", () => {
         const $nav = document.querySelector("#nav");
         const $openButton = document.querySelector("#open-menu");
         const $closeButton = document.querySelector("#close-menu");
