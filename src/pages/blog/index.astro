@@ -2,14 +2,14 @@
 import Nav from "@/components/Nav.astro";
 import TitleSection from "@/components/TitleSection.astro";
 import Layout from "@/layouts/Layout.astro";
-import { actions } from "astro:actions";
 import { formatDate } from "@/lib/dates";
 import Pagination from "@/components/Pagination.astro";
+import { getAll } from "@/services/get-all";
 
-const { data, error } = await Astro.callAction(actions.getAll, {
+const { data, error } = await getAll({
     type: "blog",
     page: Astro.url.searchParams.get("page") || "1",
-});
+})
 
 if (error) return Astro.redirect("/404");
 

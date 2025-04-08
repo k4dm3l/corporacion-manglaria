@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
-import vercelServerless from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite'
 
@@ -17,7 +17,7 @@ export default defineConfig({
     }
   },
   output: 'server',
-  adapter: vercelServerless({
+  adapter: vercel({
     isr: {
       expiration: 60 * 60 * 24,
     }

@@ -2,10 +2,10 @@
 import Nav from "@/components/Nav.astro";
 import Layout from "@/layouts/Layout.astro";
 import { formatDate } from "@/lib/dates";
-import { actions } from "astro:actions";
+import { getBydSlug } from "@/services/get-by-slug";
 import { marked } from "marked";
 
-const { data, error } = await Astro.callAction(actions.getBySlug, {
+const { data, error } = await getBydSlug({
     type: "blog",
     slug: Astro.params.slug ?? "",
 });

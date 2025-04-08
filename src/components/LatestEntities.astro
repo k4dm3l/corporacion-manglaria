@@ -1,14 +1,14 @@
 ---
 import { formatDate } from "@/lib/dates";
-import { actions } from "astro:actions";
+import { getAll } from "@/services/get-all";
 
 const { entity, link, text } = Astro.props;
 
-const { data, error } = await Astro.callAction(actions.getAll, {
+const { data, error } = await getAll({
     type: entity,
     page: Astro.url.searchParams.get("page") || "1",
     limit: "3",
-});
+})
 
 const { data: posts =[] } = data ?? {}
 ---
@@ -38,7 +38,7 @@ const { data: posts =[] } = data ?? {}
                             _id,
                         }: any) => (
                             <a
-                                href={`/blog/${slug}`}
+                                href={`${link}/${slug}`}
                                 class="group flex flex-col onverflow-hidden"
                             >
                                 <picture class="rounded-lg mb-3 aspect-video w-full overflow-hidden">
