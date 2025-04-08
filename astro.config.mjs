@@ -1,10 +1,11 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
-import vercel from '@astrojs/vercel';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite'
 
 import sitemap from '@astrojs/sitemap';
+
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
   vite: {
@@ -17,11 +18,7 @@ export default defineConfig({
     }
   },
   output: 'server',
-  adapter: vercel({
-    isr: {
-      expiration: 60 * 60 * 24,
-    }
-  }),
+  adapter: netlify(),
   build: {
     inlineStylesheets: 'always',
   },
