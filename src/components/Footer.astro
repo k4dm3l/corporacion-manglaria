@@ -2,7 +2,7 @@
 import FacebookIcon from "@/assets/icons/facebook.svg";
 import InstagramIcon from "@/assets/icons/instagram.svg";
 import CircleLogo from "@/assets/icons/circle-logo.svg";
-import { FOTER_LINKS } from "@/consts/links";
+import { FOOTER_LINKS } from "@/consts/links";
 ---
 
 <footer
@@ -22,7 +22,7 @@ import { FOTER_LINKS } from "@/consts/links";
             <p
                 class="text-white mb-4 text-lg opacity-60 text-center md:text-left"
             >
-                “donde la cultura, la paz y el cuidado se encuentran.”
+                "donde la cultura, la paz y el cuidado se encuentran."
             </p>
             <div class="flex gap-4 justify-center w-full">
                 <a
@@ -47,7 +47,7 @@ import { FOTER_LINKS } from "@/consts/links";
             class="mt-10 mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-[repeat(8,auto)] md:gap-x-5"
         >
             {
-                FOTER_LINKS.map(({ text, link, hash }: any) => (
+                FOOTER_LINKS.map(({ text, link, hash }: any) => (
                     <a
                         href={hash ? hash : link}
                         class="text-white/80 sm:text-nowrap hover:text-white hover:underline cursor-pointer transition-colors duration-200"

@@ -1,4 +1,4 @@
-export const FOTER_LINKS = [
+export const FOOTER_LINKS = [
     {
         id: 1,
         text: "Inicio",
@@ -16,7 +16,7 @@ export const FOTER_LINKS = [
     },
     {
         id: 4,
-        text: "Galeria",
+        text: "Galería",
         hash: "/gallery",
     },
     {
@@ -40,8 +40,6 @@ export const FOTER_LINKS = [
         hash: "/#work",
     },
 ]
-
-
 
 export const LANDING_LINKS = [
     {
@@ -81,7 +79,7 @@ export const LANDING_LINKS = [
     },
     {
         id: 8,
-        text: "Galeria",
+        text: "Galería",
         hash: "/gallery",
     },
 ]
@@ -119,7 +117,7 @@ export const APP_LINKS = [
     },
     {
         id: 8,
-        text: "Galeria",
+        text: "Galería",
         hash: "/gallery",
     },
 ]

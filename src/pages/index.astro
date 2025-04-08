@@ -20,10 +20,15 @@ export const prerender = true;
 		<h2
 			class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-12 text-center"
 		>
-			Ultimos Proyectos
+			Últimos Proyectos
 		</h2>
-		<LatestEntities server:defer entity="project" link="/projects" text="Ver todos">
-			<Skeleton slot="fallback"/>
+		<LatestEntities
+			server:defer
+			entity="project"
+			link="/projects"
+			text="Ver todos"
+		>
+			<Skeleton slot="fallback" />
 		</LatestEntities>
 	</section>
 	<Work />
@@ -31,10 +36,10 @@ export const prerender = true;
 		<h2
 			class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-12 text-center"
 		>
-			Ultimas publicaciones
+			Últimas publicaciones
 		</h2>
 		<LatestEntities server:defer entity="blog" link="/blog" text="Ver todos">
-			<Skeleton slot="fallback"/>
+			<Skeleton slot="fallback" />
 		</LatestEntities>
 	</section>
 
