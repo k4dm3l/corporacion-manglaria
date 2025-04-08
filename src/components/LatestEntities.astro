@@ -8,14 +8,14 @@ const { data, error } = await getAll({
     type: entity,
     page: Astro.url.searchParams.get("page") || "1",
     limit: "3",
-})
+});
 
-const { data: posts =[] } = data ?? {}
+const { data: posts = [] } = data ?? {};
 ---
 
 <section>
     {
-        error ? (
+        error || posts.length === 0 ? (
             <section class="flex flex-col items-center justify-center text-center px-6 text-slate-600">
                 <h2 class="text-2xl font-semibold text-slate-700 mb-2">
                     Aún no hay historias
@@ -66,11 +66,11 @@ const { data: posts =[] } = data ?? {}
                 </section>
                 <div class="flex justify-center">
                     <a
-                    href={link}
-                    class="bg-secondary-600 px-5 py-3 rounded-md hover:bg-secondary-800 transition text-black"
-                >
-                    {text}
-                </a>
+                        href={link}
+                        class="bg-secondary-600 px-5 py-3 rounded-md hover:bg-secondary-800 transition text-black"
+                    >
+                        {text}
+                    </a>
                 </div>
             </div>
         )
