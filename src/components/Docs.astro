@@ -1,6 +1,7 @@
 ---
-
+import WaveIcon from "@/assets/icons/wave.svg";
 import { getDocs } from "@/services/get-docs";
+
 const { data } = await getDocs();
 
 const docs = data as { label: string; value: string }[]
@@ -8,8 +9,8 @@ const docs = data as { label: string; value: string }[]
 ---
 <>
 {docs?.length > 0 && (
-    <section id="documentation" class="px-8 py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
+    <section id="docs" class="bg-secondary-600 relative">
+    <div class="max-w-7xl mx-auto py-40">
       <h2 class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-4 text-center">
         Documentos Legales
       </h2>
@@ -21,7 +22,7 @@ const docs = data as { label: string; value: string }[]
         {docs?.map(({ label, value }) => (
           <a
             href={value}
-            class="flex items-center justify-between bg-primary-900/5 text-primary-900 rounded-2xl p-4 hover:bg-primary-900/20 transition-colors duration-200"
+            class="flex items-center justify-between bg-black text-white rounded-2xl p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200"
           >
            <div class="flex items-center gap-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text-icon lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
@@ -35,6 +36,8 @@ const docs = data as { label: string; value: string }[]
         ))}
       </div>
     </div>
+    <WaveIcon class="absolute h-40 w-full top-0 inset-x-0 rotate-180" />
+    <WaveIcon class="absolute h-40 w-full -bottom-1 inset-x-0" />
 </section>
 )}
 </>
