@@ -4,40 +4,71 @@ import { getDocs } from "@/services/get-docs";
 
 const { data } = await getDocs();
 
-const docs = data as { label: string; value: string }[]
-
+const docs = data as { label: string; value: string }[];
 ---
-<>
-{docs?.length > 0 && (
-    <section id="docs" class="bg-secondary-600 relative">
-    <div class="max-w-7xl mx-auto py-40 px-8">
-      <h2 class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-4 text-center">
-        Documentos Legales
-      </h2>
-      <p class="text-xl text-balance text-center md:text-lg leading-[180%] text-slate-600 mb-12">
-        Aquí podrás encontrar toda la información legal de nuestras actividades
-      </p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {docs?.map(({ label, value }) => (
-          <a
-            href={value}
-            class="flex items-center justify-between bg-black text-white rounded-2xl p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200"
-          >
-           <div class="flex items-center gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text-icon lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-            {label}
 
-           </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        ))}
-      </div>
-    </div>
-    <WaveIcon class="absolute h-40 w-full top-0 inset-x-0 rotate-180" />
-    <WaveIcon class="absolute h-40 w-full -bottom-1 inset-x-0" />
-</section>
-)}
+<>
+  {
+    docs?.length > 0 && (
+      <section id="docs" class="bg-secondary-600 relative">
+        <div class="max-w-7xl mx-auto py-40 px-8">
+          <h2 class="text-5xl md:text-6xl font-montserrat font-bold text-black mb-4 text-center">
+            Documentos Legales
+          </h2>
+          <p class="text-xl text-balance text-center md:text-lg leading-[180%] text-slate-600 mb-12">
+            Aquí podrás encontrar toda la información legal de nuestras
+            actividades
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {docs?.map(({ label, value }) => (
+              <a
+                href={value}
+                target="_blank"
+                class="flex items-center justify-between bg-black text-white rounded-2xl p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200"
+              >
+                <div class="flex items-center gap-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-file-text-icon lucide-file-text"
+                  >
+                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                    <path d="M10 9H8" />
+                    <path d="M16 13H8" />
+                    <path d="M16 17H8" />
+                  </svg>
+                  {label}
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+        <WaveIcon class="absolute h-40 w-full top-0 inset-x-0 rotate-180" />
+        <WaveIcon class="absolute h-40 w-full -bottom-1 inset-x-0" />
+      </section>
+    )
+  }
 </>
