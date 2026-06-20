@@ -10,27 +10,50 @@ const KEYS = {
   backgroundCheckCertificate: "7. Certificado de Antecedentes",
   certificateOfManagmentPositions: '8. Certificado de Cargos Directivos',
   managementReport: 'Informe de Gestión',
-}
+} as const;
+
+type DocKey = keyof typeof KEYS;
+
+type LegalDocumentYear = {
+  year: number;
+} & Partial<Record<DocKey, string>>;
+
+export type DocItem = {
+  label: string;
+  value: string;
+};
+
+export type YearDocs = {
+  year: number;
+  docs: DocItem[];
+};
+
+const parseYearDocs = (yearData: LegalDocumentYear): YearDocs => {
+  const docs = (Object.keys(KEYS) as DocKey[]).flatMap((key) => {
+    const value = yearData[key];
+    if (!value?.startsWith('http')) return [];
+
+    return [{ label: KEYS[key], value }];
+  });
+
+  return { year: yearData.year, docs };
+};
 
 export const getDocs = async () => {
     try {
         const data = await fetcher.get(`/api/legal-documents`).then(res => res.data)
-        if (!data) {
+        if (!data || !Array.isArray(data)) {
             return { error: true, data: null }
         }
 
-        // Create docs array maintaining the exact order of KEYS object
-        const docs = Object.keys(KEYS)
-            .map(key => ({
-                label: KEYS[key as keyof typeof KEYS],
-                value: data[key as keyof typeof data]
-            }))
-            .filter(({ value }) => value && (value as string)?.startsWith('http'))
+        const docsByYear = (data as LegalDocumentYear[])
+            .map(parseYearDocs)
+            .filter(({ docs }) => docs.length > 0)
+            .sort((a, b) => b.year - a.year)
 
-        return { data: docs, error: false }
+        return { data: docsByYear, error: false }
     } catch (e) {
         console.log('GET DOCS', { e })
         return { error: true, data: null }
     }
 }
-
