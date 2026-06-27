@@ -9,7 +9,9 @@ const KEYS = {
   tributaryStatementsCorporacionManglaria: "6. Estatutos Tributarios Corporación Manglaría",
   backgroundCheckCertificate: "7. Certificado de Antecedentes",
   certificateOfManagmentPositions: '8. Certificado de Cargos Directivos',
-  managementReport: 'Informe de Gestión',
+  managementReport: '9. Informe de Gestión',
+  organizationAssets: '10. Patrimonio de la Organización',
+  incomeStatement: '11. Declaración de Renta',
 } as const;
 
 type DocKey = keyof typeof KEYS;
